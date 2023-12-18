@@ -9,7 +9,7 @@ const VideoPlayer = () => {
         autoPlay
         muted
         loop
-        src="https://drive.google.com/uc?export=preview&id=1nCEuuy7EHYAbubQaKZnn1JoTkxtmekAl"
+        src="/video.mp4"
         className="w-full absolute top-0 left-0 h-[42vh] object-cover -z-10 brightness-[40%]"
       ></video>
     </div>

@@ -19,7 +19,7 @@ const CheckForThala = () => {
   const [disabled, setDisabled] = useState(true)
   const [audio, setaudio] = useState<HTMLAudioElement>()
   useEffect(() => {
-    setaudio(new Audio("https://docs.google.com/uc?export=download&id=1rQB2hGSVwebJY9fuYPWk5pHG-5QzAUQR"))
+    setaudio(new Audio("/audio.mp3"))
     if(audio){
         audio.volume = 0.6;
     }
