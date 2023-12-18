@@ -1,10 +1,10 @@
-"use client";
+"use client";   
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { BadgeCheck, Trophy, XCircle } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ShareComp from "./Share";
 
 const CheckForThala = () => {
@@ -17,8 +17,20 @@ const CheckForThala = () => {
   const [isThala, setIsThala] = useState(false);
   const [isLoading, setisLoading] = useState(false);
   const [disabled, setDisabled] = useState(true)
-  let audio = new Audio('/audio.mp3')
-  audio.volume = 0.6;
+  const [audio, setaudio] = useState<HTMLAudioElement>()
+  useEffect(() => {
+    setaudio(new Audio("https://docs.google.com/uc?export=download&id=1rQB2hGSVwebJY9fuYPWk5pHG-5QzAUQR"))
+    if(audio){
+        audio.volume = 0.6;
+    }
+  }, [])
+
+  const play = () =>{
+    if(audio){
+        audio.play();
+    }
+  }
+  
 
   function makeSeven(inputNumber: string) {
     if (/^\d+$/.test(inputNumber)) {
@@ -41,7 +53,7 @@ const CheckForThala = () => {
         const result: number = eval(expression);
 
         if (result === 7) {
-            audio.play();
+            play();
             setReason({
                 txt: text,
                 res: `${expression} = 7`
@@ -51,7 +63,7 @@ const CheckForThala = () => {
         }
       }
     } else if (text.length == 7) {
-        audio.play();
+        play();
         setReason({
             txt: text,
             res: `word ${text} contains 7 letters in it.`
@@ -94,6 +106,7 @@ const CheckForThala = () => {
 
   return (
     <div className="w-full flex flex-col items-center my-1">
+        <audio src="/audio.mp3"></audio>
       <div className="flex w-full max-w-sm items-center space-x-2">
         <Input
           onChange={(e) => [settext(e.target.value), text.length > 0 ? setDisabled(false) : setDisabled(true) ]}
