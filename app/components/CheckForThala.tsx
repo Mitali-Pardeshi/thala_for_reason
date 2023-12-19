@@ -26,11 +26,11 @@ const CheckForThala = () => {
     if (audio) {
       audio.volume = 0.6;
     }
-    if (params.get("text")) {
+    if (params.get('text')) {
       try {
         setShow(true);
-        makeSeven(atob(params.get("text")))
-        settext(atob(params.get("text")));
+          makeSeven(atob(params.get("text") || ''))
+          settext(atob(params.get("text") || ''));
       } catch (error) {
         console.log("Incorrect text format");
       }
@@ -91,7 +91,7 @@ const CheckForThala = () => {
       setDisabled(true);
       setisLoading(false);
       pause();
-    } else if (text.length == 7 || atob(params.get("text")).length == 7) {
+    } else if (text.length == 7 || atob(params.get("text") || '').length == 7) {
       console.log("for string");
       play();
       setReason({
