@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <div className="w-full items-center justify-end flex p-6 gap-x-3">
       <Link href={'https://github.com/rishi-boi/thala_for_reason'}><Button size={'icon'} variant={'outline'}><Github/></Button></Link>
-      <ShareComp/>
+      <ShareComp website='thala-for-reason.vercel.app'/>
     </div>
   );
 };
